@@ -97,16 +97,17 @@ public class ControllerUsingURI extends HttpServlet {
 		= requestUri.substring(startIndex + contextPath.length());
 		
 		CommandHandler com = map.get(command);
-		String view;
+		String view = null;
 		try {
 			view = com.process(request, response);
-			request.getRequestDispatcher(view)
-			.forward(request, response);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {		
 			e.printStackTrace();
 		}
 				
+		if(view != null) {
+			request.getRequestDispatcher(view)
+			.forward(request, response);				
+		}
 		
 	}
 

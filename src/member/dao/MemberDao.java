@@ -53,8 +53,7 @@ public class MemberDao {
 				rs.close();
 			}
 			// try 중중괄호 안에 적으면 finally와 비슷한 효과
-		}*/
-		
+		}*/		
 		try(PreparedStatement pstmt =
 				conn.prepareStatement("insert into member values(?,?,?,?)")) {
 			pstmt.setString(1, mem.getId());
@@ -63,6 +62,17 @@ public class MemberDao {
 			pstmt.setTimestamp(4, new Timestamp(mem.getRegDate().getTime()));
 			pstmt.executeUpdate();
 		}
+	}
+	
+	public void update(Connection conn, Member member) throws SQLException {
+		try(PreparedStatement pstmt = conn.prepareStatement(
+				"update member set name = ?, password = ? where memberid =?")) {
+				pstmt.setString(1, member.getName());
+				pstmt.setString(2, member.getPassword());
+				pstmt.setString(3, member.getId());
+				pstmt.executeUpdate();
+		}
+		
 	}
 	
 }
