@@ -31,10 +31,12 @@ public class LoginCheckFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession(false);
 		
+		// 세션이 존재하지 않거나 세션에 "authUser" 속성이 없으면 login.do로 리다이렉트
 		if(session == null || session.getAttribute("authUser") == null) {
 			HttpServletResponse res = (HttpServletResponse) response;
-			res.sendRedirect(req.getContextPath() + "login,do");
+			res.sendRedirect(req.getContextPath() + "/login.do");
 		} else {
+			// 세션에 "authUser" 속성이 존재하면 로그인한 것으로 판단하고 기능 실행
 			chain.doFilter(request, response);			
 		}
 	}

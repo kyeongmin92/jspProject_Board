@@ -16,13 +16,21 @@ import org.apache.commons.dbcp2.PoolingDriver;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
+import com.mysql.cj.jdbc.AbandonedConnectionCleanupThread;
+
 
 //@WebListener -> web.xml에 등록해놓음
 public class DBCPInitListener implements ServletContextListener {
 
   
     public DBCPInitListener() {
-        // TODO Auto-generated constructor stub
+    	// mysql-cj-abandoned-connection-cleanup
+    			AbandonedConnectionCleanupThread
+    					.checkedShutdown();
+
+    			// commons-pool-evictor-thread
+    			// 는 버그...
+    			// https://help.mulesoft.com/s/article/Common-pools-evictor-thread-and-ScheduledThreadPoolExecutor-occupying-huge-memory-in-heap-space
     }
 
 	@Override
