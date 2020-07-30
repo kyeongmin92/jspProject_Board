@@ -2,6 +2,7 @@ package article.service;
 
 import java.util.Map;
 
+// 게시글 수정에 필요한 게시글번호, 수정하는 사용자 아이디, 수정할 제목, 수정할 내용 데이터
 public class ModifyRequest {
 	
 	private String userId;

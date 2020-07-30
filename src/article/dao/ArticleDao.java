@@ -157,7 +157,7 @@ public class ArticleDao {
 			}
 	}
 	
-	//게시글 제목 수정 기능, 파라미터로 전달받음 게시글 번호와 제목을 이용하여 데이터 수정
+	//게시글 제목 수정 기능, 파라미터로 전달받은 게시글 번호와 제목을 이용하여 데이터 수정
 	public int update(Connection conn, int no, String title) throws SQLException{
 		
 		try(PreparedStatement pstmt = 
@@ -169,6 +169,19 @@ public class ArticleDao {
 			pstmt.setInt(2, no);
 			
 			return pstmt.executeUpdate();
+		}
+	}
+	
+	// 지정한 주요키에 해당하는 행의 데이터를 삭제하는 쿼리를 실행
+	public int delete(Connection conn, int no) throws SQLException {
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement("delete from article "
+					+ "where article_no=?");
+			pstmt.setInt(1, no);
+			return pstmt.executeUpdate();
+		} finally {
+			JdbcUtil.close(pstmt);
 		}
 	}
 	

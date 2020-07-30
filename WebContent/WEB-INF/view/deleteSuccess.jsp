@@ -15,13 +15,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-<title>게시글 수정</title>
+<title>Insert title here</title>
 </head>
 <body>
-
-게시글을 수정했습니다.
+게시글이 삭제되었습니다.
 <br />
 <a href="${ctxPath}/article/list.do">[게시글목록보기]</a>
-<a href="${ctxPath}/article/read.do?no=${modReq.articleNumber }">[게시글내용보기]</a>
+
 </body>
 </html>
