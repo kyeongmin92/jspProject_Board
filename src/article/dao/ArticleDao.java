@@ -124,9 +124,53 @@ public class ArticleDao {
 		return new Date(timestamp.getTime());
 	}
 	
-
 	
+	//특정 번호에 해당하는 게시글 데이터 읽기
+	public Article selectById(Connection conn, int no) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			pstmt = conn.prepareStatement(
+					"select * from article where article_no=?");
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			Article article = null;
+			if(rs.next()) {				
+				article = convertArticle(rs);
+			}
+			return article;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
 	
+	//특정 번호에 해당하는 게시글 데이터의 조회수 증가하기
+	public void increaseReadCount(Connection conn, int no) throws SQLException{
+		try (PreparedStatement pstmt = 
+				conn.prepareStatement(
+				"update article set read_cnt = read_cnt + 1 " 
+				+ "where article_no = ?")) {
+					pstmt.setInt(1, no);
+					pstmt.executeUpdate();
+			}
+	}
+	
+	//게시글 제목 수정 기능, 파라미터로 전달받음 게시글 번호와 제목을 이용하여 데이터 수정
+	public int update(Connection conn, int no, String title) throws SQLException{
+		
+		try(PreparedStatement pstmt = 
+				conn.prepareStatement(
+						//moddate 컬럼의 값을 현재시간으로 설정하여 데이터 최근 수정 시간 기록
+						"update article set title = ?, moddate = now() "
+						+ "where article_no = ?")){
+			pstmt.setString(1, title);
+			pstmt.setInt(2, no);
+			
+			return pstmt.executeUpdate();
+		}
+	}
 	
 }
 
