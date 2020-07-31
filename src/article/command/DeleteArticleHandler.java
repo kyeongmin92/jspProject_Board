@@ -1,6 +1,6 @@
 package article.command;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest; 
 import javax.servlet.http.HttpServletResponse;
 
 
@@ -8,7 +8,6 @@ import article.service.ArticleNotFoundException;
 import article.service.DeleteArticleService;
 import article.service.DeleteRequest;
 import article.service.PermissionDeniedException;
-import article.service.ReadArticleService;
 import auth.service.User;
 import mvc.controller.CommandHandler;
 
@@ -16,7 +15,6 @@ public class DeleteArticleHandler implements CommandHandler {
 	
 	private static final String FORM_VIEW = "/WEB-INF/view/deleteSuccess.jsp";
 	
-	private ReadArticleService readService = new ReadArticleService();
 	private DeleteArticleService deleteService = new DeleteArticleService();
 	
 	@Override

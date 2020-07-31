@@ -27,7 +27,7 @@ public class DeleteArticleService {
 				throw new ArticleNotFoundException();
 			}
 			
-			if(!canDelete(delReq.getUserId(), article)) {
+			if(!canModify(delReq.getUserId(), article)) {
 				throw new PermissionDeniedException();
 			}
 			
@@ -46,7 +46,7 @@ public class DeleteArticleService {
 		}
 	}
 
-	private boolean canDelete(String userId, Article article) {
+	private boolean canModify(String userId, Article article) {
 		// TODO Auto-generated method stub
 		return article.getWriter().getId().equals(userId);
 	} 

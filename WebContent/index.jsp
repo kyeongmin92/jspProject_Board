@@ -32,5 +32,8 @@
 	<a href="login.do">[로그인하기]</a>
 </u:notLogin>
 
+<!-- <div><img src="/images/rabbit.jpg" alt="" /></div> -->
+
+
 </body>
 </html>

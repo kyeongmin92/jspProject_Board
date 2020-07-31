@@ -37,8 +37,13 @@
 	
 	<tr>
 		<td>내용</td>
-	<%-- <td style="white-space: pre-wrap;"><c:out value="${articleData.content }" /></td> --%>	
-		<td><u:pre value="${articleData.content }"/></td>
+		<td style="white-space: pre-wrap;">
+		<c:if test="${not empty file1 }">
+			<img src="/images/rabbit.jpg" alt="" />
+		</c:if>
+		<c:out value="${articleData.content }" />
+		</td>	
+		<%-- <td><u:pre value="${articleData.content }"/></td> --%>
 	
 	</tr>
 	

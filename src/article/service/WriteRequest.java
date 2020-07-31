@@ -5,15 +5,27 @@ import java.util.Map;
 import article.model.Writer;
 
 public class WriteRequest {
-	
 	private Writer writer;
 	private String title;
 	private String content;
-	
-	public WriteRequest(Writer writer, String title, String content) {
+	private String fileName;
+
+	public WriteRequest(Writer writer, String title,
+			String content) {
+		this(writer, title, content, "");
+	}
+
+	public WriteRequest(Writer writer, String title,
+			String content, String fileName) {
+
 		this.writer = writer;
 		this.title = title;
 		this.content = content;
+		this.fileName = fileName;
+	}
+	
+	public String getFileName() {
+		return fileName;
 	}
 
 	public Writer getWriter() {
@@ -27,12 +39,10 @@ public class WriteRequest {
 	public String getContent() {
 		return content;
 	}
-	
+
 	public void validate(Map<String, Boolean> errors) {
-		// title의 값이 없거나 공백값일 경우 errors 맵 객체에 코드 추가
-		if(title == null || title.trim().isEmpty()) {
-			errors.put("title", Boolean.TRUE);
+		if (title == null || title.trim().isEmpty()) {
+			errors.put("title", true);
 		}
 	}
-	
 }

@@ -40,9 +40,9 @@ public class WriteArticleService {
 			//AricleContent 객체 생성
 			ArticleContent content = new ArticleContent(
 					//savedArticle의 게시글 번호를 사용
-					savedArticle.getNumber(),
+					savedArticle.getNumber(),					
 					// 위에서 (34행) 삽입한 데이터와 동일한 번호를 값으로 갖는 ArticleContent객체 생성
-					req.getContent());
+					req.getContent(), req.getFileName());
 			
 			//ArticleContentDao의 insert메서드를 실행해서 article_content테이블에 데이터 삽입
 			ArticleContent savedContent = contentDao.insert(conn, content);
