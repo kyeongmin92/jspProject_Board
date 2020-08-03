@@ -27,6 +27,7 @@ public class ReadArticleHandler implements CommandHandler{
 		} catch(ArticleNotFoundException | ArticleContentNotFoundException e) {
 			req.getServletContext().log("no article", e);
 			res.sendError(HttpServletResponse.SC_NOT_FOUND);
+			e.printStackTrace();
 			return null;
 		}
 	}

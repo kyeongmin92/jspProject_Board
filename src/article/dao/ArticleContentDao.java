@@ -43,7 +43,8 @@ public class ArticleContentDao {
 			if(rs.next()) {
 				content = new ArticleContent(
 						rs.getInt("article_no"),
-						rs.getString("content"));
+						rs.getString("content"),
+						rs.getString("file_name"));
 			}
 			return content;
 		} finally {

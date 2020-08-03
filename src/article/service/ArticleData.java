@@ -9,6 +9,7 @@ public class ArticleData {
 		private ArticleContent content;
 		
 		public ArticleData(Article article, ArticleContent content) {
+			super();
 			this.article = article;
 			this.content = content;
 		}
@@ -20,5 +21,9 @@ public class ArticleData {
 		public String getContent() {
 			return content.getContent();
 		}		
+		
+		public String getFileName() {
+			return content.getFileName();
+		}
 	
 }
