@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
+<%@ taglib prefix="u" tagdir="/WEB-INF/tags" %>
         
 <!DOCTYPE html>
 <html>
@@ -22,7 +22,10 @@
 <div class="container">
 <table class="table table-bordered">
 	<tr>
-		<td colspan="4"><a href="write.do">[게시글쓰기]</a></td>
+		<td colspan="4"><a href="write.do">[게시글쓰기]</a>
+		<u:isLogin><a href="/board/logout.do" class="text-danger">[로그아웃하기]</a></u:isLogin>
+		</td>
+		
 	</tr>	
 	
 	<tr>

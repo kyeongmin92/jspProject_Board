@@ -108,10 +108,7 @@ public class ArticleDao {
 	//convertArticle 메서드는 ResultSet에서 데이터를 읽어와 Article 객체를 생성
 	private Article convertArticle(ResultSet rs) throws SQLException {
 		return new Article(rs.getInt("article_no"),
-				new Writer(
-						
-						
-						
+				new Writer(						
 						rs.getString("writer_id"),
 						rs.getString("writer_name")),
 				rs.getString("title"),

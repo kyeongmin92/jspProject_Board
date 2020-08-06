@@ -33,7 +33,7 @@ public class ArticleContentDaoInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArticleContent content = new ArticleContent(1, "content1");
+		ArticleContent content = new ArticleContent(1, "토끼");
 		ArticleContentDao dao = new ArticleContentDao();
 		Connection conn = null;
 		
